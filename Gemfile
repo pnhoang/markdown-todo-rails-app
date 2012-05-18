@@ -41,3 +41,6 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem "pygments.rb", "~> 0.2.12"
 gem 'redcarpet'
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.paginate(page: params[:page], per_page: 5)
 
     respond_to do |format|
       format.html # index.html.erb
