@@ -1,25 +1,11 @@
-<%= form_for(@todo) do |f| %>
-  <% if @todo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+<%= simple_form_for @todo, :html => { :class => 'form-horizontal' } do |f| %>
 
-      <ul>
-      <% @todo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.input :item %>
+  <%= f.input :completed_at %>
 
-  <div class="field">
-    <%= f.label :item %><br />
-    <%= f.text_area :item %>
-  </div>
-  <div class="field">
-    <%= f.label :completed_at %><br />
-    <%= f.date_select :completed_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                todos_path, :class => 'btn' %>
   </div>
 <% end %>

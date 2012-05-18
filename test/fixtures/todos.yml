@@ -7,3 +7,8 @@ one:
 two:
   item: MyText
   completed_at: 2012-05-16
+  
+empty_item:
+  item:
+  completed_at: 2012-05-16
+  

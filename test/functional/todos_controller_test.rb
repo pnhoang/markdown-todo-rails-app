@@ -24,6 +24,14 @@ class TodosControllerTest < ActionController::TestCase
     assert_redirected_to todo_path(assigns(:todo))
   end
 
+  test "should not create todo" do
+    assert_no_difference('Todo.count') do
+      post :create, todo: { item: todos(:empty_item)}
+    end
+    
+    assert_response :error
+  end
+
   test "should show todo" do
     get :show, id: @todo
     assert_response :success

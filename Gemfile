@@ -37,3 +37,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'simple_form'
+gem "pygments.rb", "~> 0.2.12"
+gem 'redcarpet'
