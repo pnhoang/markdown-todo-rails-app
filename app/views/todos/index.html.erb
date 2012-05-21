@@ -5,7 +5,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:item) %></th>
-      <th><%= model_class.human_attribute_name(:completed_at) %></th>
+      <th><%= model_class.human_attribute_name(:completed) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= link_to todo.id, todo_path(todo) %></td>
         <td><%= markdown todo.item %></td>
-        <td><%= todo.completed_at %></td>
+        <td><%= check_box_tag :completed, todo.completed.to_s,  todo.completed, disabled: true %></td>
         <td><%=l todo.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
