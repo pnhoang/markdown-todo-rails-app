@@ -1,7 +1,7 @@
 class ChangeTodoTable < ActiveRecord::Migration
   def up
     change_table :todos do |t|
-      t.boolean :completed
+      t.boolean :completed, default: false
       Todo.all.each do |todo|
         if todo.completed_at != nil
           todo.update_attributes! completed: true

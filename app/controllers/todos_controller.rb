@@ -2,29 +2,31 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.paginate(page: params[:page], per_page: 5)
-
+    @list = List.find(params[:list_id])
+    @todos = @list.todos.paginate(page: params[:page], per_page: 5)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @todos }
+      format.json { render json: @list }
     end
   end
 
   # GET /todos/1
   # GET /todos/1.json
   def show
-    @todo = Todo.find(params[:id])
+    @list = List.find(params[:list_id])
+    @todo = @list.todos.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @todo }
+      format.json { render json: @list }
     end
   end
 
   # GET /todos/new
   # GET /todos/new.json
   def new
-    @todo = Todo.new
+    @list = List.find(params[:list_id])
+    @todo = @list.todos.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,18 +36,20 @@ class TodosController < ApplicationController
 
   # GET /todos/1/edit
   def edit
-    @todo = Todo.find(params[:id])
+    @list = List.find(params[:list_id])
+    @todo = @list.todos.find(params[:id])
   end
 
   # POST /todos
   # POST /todos.json
   def create
-    @todo = Todo.new(params[:todo])
-
+    @list = List.find(params[:list_id])
+    @todo = @list.todos.build(params[:todo])
+    
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
-        format.json { render json: @todo, status: :created, location: @todo }
+        format.html { redirect_to list_todos_path(@list), notice: 'Todo item was successfully created.' }
+        format.json { render json: @list, status: :created, location: @list }
       else
         format.html { render action: "new" }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
@@ -56,11 +60,12 @@ class TodosController < ApplicationController
   # PUT /todos/1
   # PUT /todos/1.json
   def update
-    @todo = Todo.find(params[:id])
+    @list = List.find(params[:list_id])
+    @todo = @list.todos.find(params[:id])
 
     respond_to do |format|
       if @todo.update_attributes(params[:todo])
-        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
+        format.html { redirect_to list_todo_url(@list, @todo), notice: 'Todo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
