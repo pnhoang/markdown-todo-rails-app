@@ -1,12 +1,35 @@
 class ListsController < ApplicationController
+  before_filter :authorize
+  layout 'with_links'
+  
   # GET /lists
   # GET /lists.json
   def index
     @lists = List.paginate(page: params[:page], per_page: 10)
-
+    @title = "All Lists"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lists }
+    end
+  end
+  
+  def finished
+    @lists = List.paginate(page: params[:page], per_page: 5)
+    @title = "Finished Lists"
+    respond_to do |format|
+      format.html {
+        render 'index'
+      }
+      format.json { render json: @lists}
+    end
+  end
+  
+  def unfinished
+    @lists = List.paginate(page: params[:page], per_page: 5)
+    @title = "Unfinished Lists"
+    respond_to do |format|
+      format.html { render 'index'}
+      format.json { render json: @lists}
     end
   end
 

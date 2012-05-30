@@ -1,4 +1,7 @@
 class TodosController < ApplicationController
+  before_filter :authorize
+  layout 'with_links'
+  
   # GET /todos
   # GET /todos.json
   def index

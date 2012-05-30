@@ -1,0 +1,38 @@
+<div class="hero-unit">
+  <h1>Welcome to Markdown Todo</h1>
+  <p> Your Todo Items are awesome with Markdown! 
+  </p>
+  <p>
+    Use all the available syntax at <a alt="Markdown" href="http://daringfireball.net/projects/markdown"> Markdown project</a> to create your Todo items
+  </p>
+  <p>
+    <%= link_to "Sign up now !", signup_path, class: 'btn btn-primary btn-large' %>
+</div>
+
+<section class='row features'>
+    <h2>Awesome Markdown Syntax</h2>
+    <p class="intro">Create your Todo Items with Markdown syntax. </p>
+    <p>Embedding a link to your item is as easy as this: </p>
+    <p> <%= check_box_tag "read", 'no', false %> Read the [Ruby on Rails Tutorials](http://ruby.rubytutorials.org)</p>
+    <p>
+      And your Todo item will be:</p>
+    <p>
+      <%= check_box_tag "read", 'no', false %> <span> Read the <a alt="Ruby on Rails Tutorials" href="http://ruby.rubytutorials.org">Ruby on Rails Tutorials</a> 
+    </p>
+</section>
+
+<section class='row'>
+    <h2>Secure</h2>
+    <p class="intro">SSL connection everywhere on the site. </p>
+    
+    <p>We don't store your password directly into database. </p> 
+    <p>We will not share your email address to any third parties or send you junk mail! </p>
+  
+</section>
+
+<section class='row'>
+    <h2>Cloud storage</h2>
+    <p class="intro">Cloud based storage makes your Todo Items available almost every where </p> 
+    <p>iPhone client available on iTunes.
+    </p>
+</section>

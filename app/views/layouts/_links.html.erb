@@ -1,0 +1,36 @@
+<div class="well sidebar-nav">
+  <h3>LINKS</h3>
+  <ul class="nav nav-list">
+    <li class="nav-header">Lists</li>
+    <li><%= link_to(lists_path) do  %>
+      <i class="icon-list"></i>
+      My Lists
+      <% end %>
+    </li>
+    <li><%= link_to (finished_lists_path)  do %>
+      <i class="icon-check"></i>
+      Finished Lists
+      <% end %>
+    </li>
+
+    <li><%= link_to (unfinished_lists_path) do  %>
+      <i class="icon-edit"></i>
+      Unfinished Lists
+      <% end %>
+    </li>
+    <li class="nav-header">Account</li>
+
+    <% if current_user %>
+    <li><%= link_to ("/path4") do %>
+      <i class="icon-user"></i>
+      My Account
+      <% end %>
+    </li>                  
+    <li><%= link_to "Log Out", signout_path, method: :delete %></li>
+    <% else %>
+    <li><%= link_to "Sign Up", signup_path %></li>
+    <li><%= link_to "Log In", signin_path %></li>
+    <% end %>
+
+  </ul>
+</div><!--/.well -->

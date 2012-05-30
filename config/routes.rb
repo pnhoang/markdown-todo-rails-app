@@ -1,28 +1,23 @@
 TodoApp::Application.routes.draw do
+  
+  match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+  resources :sessions, only: :create
+  resources :users
+
+  match '/about', to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+  
   resources :lists do
+    collection do
+      get 'finished'
+      get 'unfinished'
+    end
+    
     resources :todos
   end
   
-  namespace :admin do
-    resources :posts, :comments
-  end
-  
-  scope module: "admin" do
-    resources :posts, :comments
-  end
-  
-  resources :articles, module: "admin"
-  
-  resources :photos do
-    member do
-      get 'preview'
-    end
-    collection do
-      get 'search'
-    end
-  end
-  
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -72,7 +67,7 @@ TodoApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'lists#index'
+  root :to => 'static_pages#home'
 
   # See how all your routes lay out with "rake routes"
 

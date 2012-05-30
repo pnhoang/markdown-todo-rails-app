@@ -1,0 +1,12 @@
+<% content_for :divided_spans do %>
+<div class="row">
+  <div class="span9">
+    <%= yield %>
+  </div>
+  <div class="span3">
+    <%= render "layouts/links"%>
+  </div>
+</div>
+<% end %>
+
+<%= render template: 'layouts/application'%>
